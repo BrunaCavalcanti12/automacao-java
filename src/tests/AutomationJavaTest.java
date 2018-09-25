@@ -38,19 +38,21 @@ public class AutomationJavaTest {
 	public void sauceLabsTest() throws InterruptedException {
 		driver.get("http://saucelabs.com");
 
+		// Este site gera as classes e ids dinamicamente o que torna os seletores inválidos com frequencia
 		driver.findElement(By.className("_16Ez")).click();
 
+		// Como não é possível desativar as animações no site é necessário aguardar 1 segundo até a animação finalizar
 		Thread.sleep(1000);
 
 		driver.findElement(By.linkText("Cross Browser Testing")).click();
 
 		Thread.sleep(1000);
 
-		driver.findElement(By.xpath("//*[@id=\"react_zQvZpY1NHE6rBiBWxlpzg\"]/div/div[2]/div/p[2]/a")).click();
+		driver.findElement(By.cssSelector("#react_YECL9Z8ZtkCDdGMoAQDPgA a")).click();
 
 		Thread.sleep(1000);
 
-		String message = driver.findElement(By.id("react_eB1hcwfaUk2CT7CirxdH9g")).getText();
+		String message = driver.findElement(By.id("react_58EnrJdCjU6YG2AnAhVhPQ")).getText();
 
 		assertEquals(message, "Run Selenium tests securely in the cloud");
 	}
